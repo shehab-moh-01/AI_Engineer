@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            text-align: center;
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        h1 {
+            font-size: 3.5rem;
+            color: #00ffff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.3); }
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+        }
+
+        /* Skills Section with Neural Network-inspired grid */
+        .skills {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .skills h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .skill-item:hover::before {
+            left: 100%;
+        }
+        .skill-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .skill-item strong {
+            color: #00ffff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .tabs-section {
+            margin-bottom: 40px;
+        }
+        .tabs-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        .tab-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        .tab-nav {
+            display: flex;
+            background: rgba(0, 0, 0, 0.5);
+            overflow-x: auto;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        .tab-btn {
+            flex: 0 0 auto;
+            padding: 18px 30px;
+            background: none;
+            border: none;
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
+        }
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: #00ffff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .tab-btn.active,
+        .tab-btn:hover {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        .tab-btn.active::after,
+        .tab-btn:hover::after {
+            width: 80%;
+        }
+        .tab-content {
+            padding: 40px;
+            display: none;
+            animation: slideIn 0.6s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Project/Cert Content with Holographic Cards */
+        .project-cert-card {
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .project-cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+        }
+        .project-cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .project-cert-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            filter: brightness(1.1);
+        }
+        .project-cert-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            color: #00ffff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+        }
+        .project-cert-card p {
+            color: #b0b0b0;
+            margin-bottom: 12px;
+        }
+        .project-cert-card .tech-stack {
+            font-size: 0.95rem;
+            color: #ff00ff;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .project-cert-card .links {
+            display: flex;
+            gap: 15px;
+        }
+        .project-cert-card a {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            color: #000;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
+        }
+        .project-cert-card a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .tab-btn { padding: 15px 20px; font-size: 1rem; }
+            .tab-content { padding: 25px; }
+            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            margin-top: 40px;
+            color: #b0b0b0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+	span
+	{
+		color : #E0E0E0 ;
+	}
+
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Shehab Moahmed</h1>
+            <p class="subtitle">AI Engineer</p>
+        </header>
+
+        <section class="skills">
+            <h2>Core Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <strong>Python</strong>
+                    <span>Advanced scripting & data science</span>
+                </div>
+                <div class="skill-item">
+                    <strong>TensorFlow</strong>
+                    <span>Deep learning frameworks</span>
+                </div>
+                <div class="skill-item">
+                    <strong>PyTorch</strong>
+                    <span>Dynamic neural networks</span>
+                </div>
+                <div class="skill-item">
+                    <strong>Scikit-learn</strong>
+                    <span>ML algorithms & pipelines</span>
+                </div>
+                <div class="skill-item">
+                    <strong>NLP</strong>
+                    <span>Transformers & sentiment analysis</span>
+                </div>
+                <div class="skill-item">
+                    <strong>Computer Vision</strong>
+                    <span>CNNs & object detection</span>
+                </div>
+                <div class="skill-item">
+                    <strong>Arduino / Raspberry Pi</strong>
+                    <span>Embedded hardware platforms</span>
+                </div>
+
+                <div class="skill-item">
+                    <strong>NumPy</strong>
+                    <span>Numerical computing</span>
+                </div>
+                <div class="skill-item">
+                    <strong>Pandas</strong>
+                    <span>Data manipulation & analysis</span>
+                </div>
+                <div class="skill-item">
+                    <strong>Matplotlib</strong>
+                    <span>Data visualization</span>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section class="tabs-section">
+            <h2>AI Innovations</h2>
+            <div class="tab-container">
+                <nav class="tab-nav" role="tablist">
+                    <button class="tab-btn active" data-tab="project1">Project: Image Classifier</button>
+                    <button class="tab-btn" data-tab="project2">Project: Chatbot AI</button>
+                    <button class="tab-btn" data-tab="project3">Project: Robotic Hand</button>
+		    <button class="tab-btn" data-tab="cert1">Cert: ITI Cert</button>
+                    <button class="tab-btn" data-tab="cert2">Cert: Nvidia Cert</button>
+                </nav>
+                <div class="tab-content active" id="project1">
+                    <div class="project-cert-card">
+                        <img src="https://via.placeholder.com/500x220/00ffff/000?text=Image+Classifier" alt="Image Classifier Demo">
+                        <h3>Convolutional Neural Network for Image Recognition</h3>
+                        <p>A high-accuracy CNN model trained on CIFAR-10 dataset, achieving 92% accuracy in classifying everyday objects. Deployed via Flask API for real-time inference.</p>
+                        <div class="tech-stack">Tech: TensorFlow, Keras, OpenCV</div>
+                        <div class="links">
+                            <a href="https://github.com/alexrivera/image-classifier" target="_blank">GitHub</a>
+                            <a href="https://alex-image-classifier.streamlit.app" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="project2">
+                    <div class="project-cert-card">
+                        <img src="https://via.placeholder.com/500x220/ff00ff/000?text=Chatbot+AI" alt="Chatbot AI Demo">
+                        <h3>Generative Chatbot with Transformer Architecture</h3>
+                        <p>An NLP-powered conversational AI using GPT-like transformers, fine-tuned on custom datasets for domain-specific responses. Integrated with RAG for enhanced accuracy.</p>
+                        <div class="tech-stack">Tech: PyTorch, Hugging Face, LangChain</div>
+                        <div class="links">
+                            <a href="https://github.com/alexrivera/chatbot-ai" target="_blank">GitHub</a>
+                            <a href="https://alex-chatbot.herokuapp.com" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="cert1">
+                    <div class="project-cert-card">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E22AQG9KryvZfw84A/feedshare-shrink_2048_1536/B4EZpUd0ECIQAw-/0/1762353698293?e=2147483647&v=beta&t=RDoy6qv2uStcxbMfzIJC4MxOfxPx3QgVX0Ij2AEGE64" alt="ITI AI Certificate">
+                        <h3>Summer Training with ITI Egypt & NVIDIA</h3>
+                        <p>Completed hands-on, GPU-accelerated training covering Python, Generative AI, LLM applications, 
+prompt engineering, and RAG-powered LLMs.</p>
+                        <div class="tech-stack">Issued: 2025</div>
+                        <div class="links">
+                            <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_ai-llm-rag-activity-7391847189968338945-a5sV?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy" target="_blank">View Cert</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="tab-content" id="project3">
+                    <div class="project-cert-card">
+                        <img src="img.jpg" alt="Chatbot AI Demo">
+                        <h3>Vision-Guided Robotic Arm & Hand</h3>
+                        <p>Developed a vision-controlled robotic arm and hand for real-time gesture mirroring using Python, OpenCV, 
+MediaPipe, and Arduino-driven servos. Implemented inverse kinematics, motion smoothing, and a lightweight 
+serial protocol for fluid, human-like movement.</p>
+                        <div class="tech-stack">Tech: PyTorch, Hugging Face, LangChain</div>
+                        <div class="links">
+                            <a href="https://github.com/shehab-7004/Robotic_Arm" target="_blank">GitHub</a>
+                            <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_robotics-computervision-arduino-activity-7329958986663759873-TH2G?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="cert1">
+                    <div class="project-cert-card">
+                        <img src="https://via.placeholder.com/500x220/00ffff/000?text=Coursera+DL+Cert" alt="Coursera Deep Learning Certificate">
+                        <h3>Deep Learning Specialization (Coursera)</h3>
+                        <p>Comprehensive certification by Andrew Ng, covering neural networks, CNNs, RNNs, and sequence models with practical implementations.</p>
+                        <div class="tech-stack">Issued: 2024 | Expires: N/A</div>
+                        <div class="links">
+                            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/abc123" target="_blank">View Cert</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="tab-content" id="cert2">
+                    <div class="project-cert-card">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E22AQGZyh0EQkPkvQ/feedshare-shrink_1280/B4EZl_Np1sGcAs-/0/1758775910958?e=2147483647&v=beta&t=dpVtuK2hIJo_hrGZR0xA4wTLvLqJqd-fbyoqZPGmTXo" alt="NVIDIA AI Certificate">
+                        <h3>NVIDIA LLM Prompt Engineering Course</h3>
+                        <p>Completed advanced training in large language models and prompt engineering, gaining practical AI solution design skills.</p>
+                        <div class="tech-stack">Issued: 2025</div>
+                        <div class="links">
+                            <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_llm-promptengineering-nvidia-activity-7376840845821628417-QQ0G" target="_blank">View Cert</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Shehab Mohamed. Engineered with AI precision and code artistry.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetTab = btn.dataset.tab;
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

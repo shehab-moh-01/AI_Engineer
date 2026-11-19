@@ -1,467 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Engineer</title>
-	<link rel="icon" href="img2.jpg" type="image/png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            text-align: center;
-            padding: 80px 0;
-            background: rgba(0, 0, 0, 0.3);
-            margin-bottom: 40px;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.05), transparent);
-            animation: shimmer 3s infinite;
-        }
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        h1 {
-            font-size: 3.5rem;
-            color: #00ffff;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
-            to { text-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.3); }
-        }
-        .subtitle {
-            font-size: 1.3rem;
-            color: #b0b0b0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shehab Mohamed — AI Engineer</title>
+<meta name="description" content="AI engineer building systems that see, read and move: computer vision, NLP and robotics.">
+<link rel="icon" href="img2.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0e1a; --ink2:#111729; --line:rgba(236,232,223,.14);
+  --bone:#ece8df; --mute:#9aa3b8; --amber:#ffb347; --sky:#7fc8ff;
+  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--bone);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 
-        /* Skills Section with Neural Network-inspired grid */
-        .skills {
-            margin-bottom: 40px;
-            text-align: center;
-        }
-        .skills h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-        .skill-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        .skill-item:hover::before {
-            left: 100%;
-        }
-        .skill-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(0, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .skill-item strong {
-            color: #00ffff;
-            display: block;
-            margin-bottom: 5px;
-        }
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:20px 28px;background:linear-gradient(var(--ink),transparent)}
+nav .logo{font-family:var(--serif);font-size:1.5rem;text-decoration:none}
+nav ul{display:flex;gap:26px;list-style:none}
+nav a{text-decoration:none;color:var(--mute);font-size:.95rem;transition:color .2s}
+nav a:hover{color:var(--bone)}
 
-        .tabs-section {
-            margin-bottom: 40px;
-        }
-        .tabs-section h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-        .tab-container {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-        }
-        .tab-nav {
-            display: flex;
-            background: rgba(0, 0, 0, 0.5);
-            overflow-x: auto;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-        }
-        .tab-btn {
-            flex: 0 0 auto;
-            padding: 18px 30px;
-            background: none;
-            border: none;
-            color: #b0b0b0;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            position: relative;
-        }
-        .tab-btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background: #00ffff;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        .tab-btn.active,
-        .tab-btn:hover {
-            color: #00ffff;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-        .tab-btn.active::after,
-        .tab-btn:hover::after {
-            width: 80%;
-        }
-        .tab-content {
-            padding: 40px;
-            display: none;
-            animation: slideIn 0.6s ease;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line);
+  background:radial-gradient(ellipse 60% 55% at 78% 45%,rgba(127,200,255,.10),transparent 70%),radial-gradient(ellipse 40% 40% at 20% 100%,rgba(255,179,71,.07),transparent 70%)}
+#stage{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+.hero .wrap{position:relative;z-index:2;pointer-events:none;width:100%}
+.hero .in{max-width:620px;pointer-events:none}
+.role{color:var(--amber);font-size:.95rem;margin-bottom:18px;font-weight:500}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.6rem,10vw,8rem);line-height:.92;letter-spacing:-.02em}
+h1 em{color:var(--bone);opacity:.55}
+.lede{margin-top:28px;font-size:1.2rem;color:#c9cedb;max-width:30em}
+.cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;pointer-events:auto}
+.btn{padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.95rem;transition:transform .2s,background .2s}
+.btn.main{background:var(--amber);color:#1a1100}
+.btn.ghost{border:1px solid var(--line);color:var(--bone)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost:hover{background:rgba(255,255,255,.06)}
+.hint{position:absolute;right:28px;bottom:26px;z-index:2;font-size:.85rem;color:var(--mute);pointer-events:none;text-align:right}
 
-        /* Project/Cert Content with Holographic Cards */
-        .project-cert-card {
-            display: flex;
-            flex-direction: column;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .project-cert-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff);
-        }
-        .project-cert-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .project-cert-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            filter: brightness(1.1);
-        }
-        .project-cert-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-            color: #00ffff;
-            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-        }
-        .project-cert-card p {
-            color: #b0b0b0;
-            margin-bottom: 12px;
-        }
-        .project-cert-card .tech-stack {
-            font-size: 0.95rem;
-            color: #ff00ff;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        .project-cert-card .links {
-            display: flex;
-            gap: 15px;
-        }
-        .project-cert-card a {
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #00ffff, #ff00ff);
-            color: #000;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
-        }
-        .project-cert-card a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.5);
-        }
+/* sections */
+section.s{padding:120px 0;border-bottom:1px solid var(--line)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.05;margin-bottom:56px;max-width:14em}
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .tab-btn { padding: 15px 20px; font-size: 1rem; }
-            .tab-content { padding: 25px; }
-            .skills-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
-        }
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
-            margin-top: 40px;
-            color: #b0b0b0;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-        }
-	span
-	{
-		color : #E0E0E0 ;
-	}
+/* expertise */
+.grp{display:grid;grid-template-columns:220px 1fr;gap:20px 40px;padding:26px 0;border-top:1px solid var(--line)}
+.grp:last-child{border-bottom:1px solid var(--line)}
+.grp h3{font-family:var(--serif);font-weight:400;font-size:1.6rem;color:var(--sky)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:.95rem;color:#d6dae5;transition:border-color .2s,color .2s,background .2s}
+.chips span:hover{border-color:var(--amber);color:var(--amber);background:rgba(255,179,71,.06)}
 
-    </style>
+/* projects */
+.proj{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;margin-bottom:96px}
+.proj:last-child{margin-bottom:0}
+.proj:nth-child(even){grid-template-columns:1fr 1.1fr}
+.proj:nth-child(even) .shot{order:2}
+.shot{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--ink2)}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.proj:hover .shot img{transform:scale(1.05)}
+.proj h3{font-family:var(--serif);font-weight:400;font-size:2.2rem;line-height:1.1;margin-bottom:16px}
+.proj p{color:#c0c6d4;max-width:34em}
+.tech{margin:18px 0 26px;display:flex;gap:8px;flex-wrap:wrap}
+.tech span{font-size:.85rem;color:var(--sky);background:rgba(127,200,255,.08);padding:4px 12px;border-radius:6px}
+.links{display:flex;gap:22px}
+.links a{font-weight:700;text-decoration:none;border-bottom:2px solid var(--amber);padding-bottom:2px;transition:color .2s}
+.links a:hover{color:var(--amber)}
+
+/* credentials */
+.cert{display:grid;grid-template-columns:80px 1fr auto;gap:28px;align-items:center;padding:28px 0;border-top:1px solid var(--line)}
+.cert:last-child{border-bottom:1px solid var(--line)}
+.cert img{width:80px;height:56px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--ink2)}
+.cert h3{font-size:1.2rem;font-weight:700}
+.cert p{color:var(--mute);font-size:.95rem}
+.cert .yr{font-family:var(--serif);font-size:1.5rem;color:var(--amber);margin-right:24px}
+.cert a{white-space:nowrap;text-decoration:none;font-weight:700;border:1px solid var(--line);padding:9px 20px;border-radius:999px;transition:background .2s,color .2s}
+.cert a:hover{background:var(--amber);color:#1a1100;border-color:var(--amber)}
+
+/* contact */
+.contact{text-align:left}
+.contact h2{max-width:11em;font-size:clamp(2.8rem,8vw,6rem)}
+.contact .row{display:flex;gap:14px;flex-wrap:wrap}
+footer{padding:34px 0;color:var(--mute);font-size:.9rem}
+
+@media(max-width:820px){
+  nav ul{display:none}
+  .grp{grid-template-columns:1fr}
+  .proj,.proj:nth-child(even){grid-template-columns:1fr;gap:26px}
+  .proj:nth-child(even) .shot{order:0}
+  .cert{grid-template-columns:64px 1fr;gap:16px}
+  .cert img{width:64px;height:46px}
+  .cert a{grid-column:2;justify-self:start}
+  .hint{display:none}
+  section.s{padding:84px 0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
-
-
 <body>
-    <div class="container">
-        <header>
-            <h1>Shehab Moahmed</h1>
-            <p class="subtitle">AI Engineer</p>
-        </header>
 
-        <section class="skills">
-            <h2>Core Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <strong>Python</strong>
-                    <span>Advanced scripting & data science</span>
-                </div>
-                <div class="skill-item">
-                    <strong>TensorFlow</strong>
-                    <span>Deep learning frameworks</span>
-                </div>
-                <div class="skill-item">
-                    <strong>PyTorch</strong>
-                    <span>Dynamic neural networks</span>
-                </div>
-                <div class="skill-item">
-                    <strong>Scikit-learn</strong>
-                    <span>ML algorithms & pipelines</span>
-                </div>
-                <div class="skill-item">
-                    <strong>NLP</strong>
-                    <span>Transformers & sentiment analysis</span>
-                </div>
-                <div class="skill-item">
-                    <strong>Computer Vision</strong>
-                    <span>CNNs & object detection</span>
-                </div>
-                <div class="skill-item">
-                    <strong>Arduino / Raspberry Pi</strong>
-                    <span>Embedded hardware platforms</span>
-                </div>
+<nav>
+  <a class="logo" href="#top">Shehab Mohamed</a>
+  <ul>
+    <li><a href="#skills">Expertise</a></li>
+    <li><a href="#work">Projects</a></li>
+    <li><a href="#certs">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-                <div class="skill-item">
-                    <strong>NumPy</strong>
-                    <span>Numerical computing</span>
-                </div>
-                <div class="skill-item">
-                    <strong>Pandas</strong>
-                    <span>Data manipulation & analysis</span>
-                </div>
-                <div class="skill-item">
-                    <strong>Matplotlib</strong>
-                    <span>Data visualization</span>
-                </div>
-
-
-            </div>
-        </section>
-
-        <section class="tabs-section">
-            <h2>AI Innovations</h2>
-            <div class="tab-container">
-                <nav class="tab-nav" role="tablist">
-                    <button class="tab-btn active" data-tab="project1">Project: Image Classifier</button>
-                    <button class="tab-btn" data-tab="project2">Project: Chatbot AI</button>
-                    <button class="tab-btn" data-tab="project3">Project: Robotic Hand</button>
-		            <button class="tab-btn" data-tab="cert1">Cert: ITI Cert</button>
-                    <button class="tab-btn" data-tab="cert2">Cert: Nvidia Cert</button>
-					<button class="tab-btn" data-tab="cert3">Cert: Cisco Cert</button>
-					<button class="tab-btn" data-tab="cert4">Cert: Telcom-Egypt Cert</button>
-                </nav>
-                <div class="tab-content active" id="project1">
-                    <div class="project-cert-card">
-                        <img src="./img4.png">
-<h3>Logistic Regression for Day/Night Image Classification</h3>
-<p>A lightweight machine learning project using OpenCV (CV2) to train a Logistic Regression model. The model learns to distinguish between daytime and nighttime images, enabling accurate binary classification. Deployed with a simple interface for real-time predictions on any input image.</p>
-<div class="tech-stack">Tech: Python, OpenCV (CV2), scikit-learn</div>
-
-                        <div class="links">
-                            <a href="https://colab.research.google.com/drive/1WjCO3p4opNNXXzfWCVzy9ZKqCi1v5Qt8" target="_blank">colab</a>
-							<a href="https://youtu.be/_-N8ZkAIWag" target="_blank">Demo</a>
-						</div>
-                    </div>
-                </div>
-                <div class="tab-content" id="project2">
-                    <div class="project-cert-card">
-                        <img src="img3.png" alt="Chatbot AI Demo">
-                        <h3>Generative Chatbot with Transformer Architecture</h3>
-                        <p>An NLP-powered conversational AI using GPT-like transformers, fine-tuned on custom datasets for domain-specific responses. Integrated with RAG for enhanced accuracy.</p>
-                        <div class="tech-stack">Tech: PyTorch, Hugging Face, LangChain</div>
-                        <div class="links">
-                            <a href="https://github.com/shehab-moh-01/AI_Chat_Bot" target="_blank">GitHub</a>
-                            <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_machinelearning-nlp-huggingface-activity-7330227789586956289-WriG?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFqZmVMBf-O0bL0658bK5R9oh1a9wIYXt3M" target="_blank">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-content" id="cert1">
-                    <div class="project-cert-card">
-                        <img src="./ITI-Cert.jpg">
-                        <h3>Summer Training with ITI Egypt & NVIDIA</h3>
-                        <p>Completed hands-on, GPU-accelerated training covering Python, Generative AI, LLM applications, 
-prompt engineering, and RAG-powered LLMs.</p>
-                        <div class="tech-stack">Issued: 2025</div>
-                        <div class="links">
-                            <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_ai-llm-rag-activity-7391847189968338945-a5sV?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy" target="_blank">View Cert</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="tab-content" id="project3">
-                    <div class="project-cert-card">
-                        <img src="img.jpg" alt="Chatbot AI Demo">
-                        <h3>Vision-Guided Robotic Arm & Hand</h3>
-                        <p>Developed a vision-controlled robotic arm and hand for real-time gesture mirroring using Python, OpenCV, 
-MediaPipe, and Arduino-driven servos. Implemented inverse kinematics, motion smoothing, and a lightweight 
-serial protocol for fluid, human-like movement.</p>
-                        <div class="tech-stack">Tech: PyTorch, Hugging Face, LangChain</div>
-                        <div class="links">
-                            <a href="https://github.com/shehab-7004/Robotic_Arm" target="_blank">GitHub</a>
-                            <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_robotics-computervision-arduino-activity-7329958986663759873-TH2G?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy" target="_blank">Live Demo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="cert2">
-                    <div class="project-cert-card">
-                        <img src="./NVIDIA-Cert.jpg">
-                        <h3>NVIDIA LLM Prompt Engineering Course</h3>
-                        <p>Completed advanced training in large language models and prompt engineering, gaining practical AI solution design skills.</p>
-                        <div class="tech-stack">Issued: 2025</div>
-                        <div class="links">
-                            <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_llm-promptengineering-nvidia-activity-7376840845821628417-QQ0G" target="_blank">View Cert</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-					<div class="tab-content" id="cert3">
-                    <div class="project-cert-card">
-                        <img src="cisco.jpg" alt="NVIDIA AI Certificate">
-						<h3>Cisco CCNA Training Program</h3>
-						<p>Comprehensive networking courses covering routing, switching, and network fundamentals</p>
-                        <div class="tech-stack">Issued: 2025</div>
-                        <div class="links">
-                            <a href="https://www.credly.com/users/shehab-mohamed.c8d835fa/badges#credly" target="_blank">View Cert</a>
-                        </div>
-                    </div>
-                </div>
-
-			        <div class="tab-content" id="cert4">
-                    <div class="project-cert-card">
-                        <img src="We-Cert.jpg">
-                        <h3>Telecom Egypt Summer Training</h3>
-                        <p>Hands-on CCNA networking training covering routing, switching, and network fundamentals.</p>
-                        <div class="tech-stack">Issued: 2025</div>
-                        <div class="links">
-                            <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_ccna-networking-telecomegypt-activity-7401121371382034447-t2yb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFqZmVMBf-O0bL0658bK5R9oh1a9wIYXt3M" target="_blank">View Cert</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-
-	
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Shehab Mohamed. Engineered with AI precision and code artistry.</p>
-        </footer>
+<header class="hero" id="top">
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="in">
+      <p class="role">AI Engineer</p>
+      <h1>Shehab <em>Mohamed</em></h1>
+      <p class="lede">I build systems that see, read and move: computer vision, language models and robotics, from training to hardware.</p>
+      <div class="cta">
+        <a class="btn main" href="#work">See my projects</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
     </div>
+  </div>
+  <p class="hint">Move your cursor and the hand follows.<br>Press and hold to close it.</p>
+</header>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const targetTab = btn.dataset.tab;
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-                    btn.classList.add('active');
-                    document.getElementById(targetTab).classList.add('active');
-                });
-            });
-        });
-    </script>
+<section class="s" id="skills">
+  <div class="wrap">
+    <h2>The tools I think and build with</h2>
+    <div class="grp"><h3>Machine learning</h3><div class="chips"><span>TensorFlow</span><span>PyTorch</span><span>Scikit-learn</span></div></div>
+    <div class="grp"><h3>Language and vision</h3><div class="chips"><span>NLP and Transformers</span><span>Sentiment analysis</span><span>Hugging Face</span><span>LangChain and RAG</span><span>Computer vision</span><span>CNNs and object detection</span><span>OpenCV</span><span>MediaPipe</span></div></div>
+    <div class="grp"><h3>Data</h3><div class="chips"><span>Python</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span></div></div>
+    <div class="grp"><h3>Hardware</h3><div class="chips"><span>Arduino</span><span>Raspberry Pi</span><span>Servo control</span><span>Serial protocols</span></div></div>
+  </div>
+</section>
+
+<section class="s" id="work">
+  <div class="wrap">
+    <h2>Projects that run in the real world</h2>
+
+    <article class="proj">
+      <div class="shot"><img src="./img.jpg" alt="Vision-guided robotic arm and hand" onerror="this.remove()"></div>
+      <div>
+        <h3>Vision-guided robotic arm and hand</h3>
+        <p>A robotic arm and hand that mirror human gestures in real time. A camera reads the hand, MediaPipe extracts its landmarks, and Arduino-driven servos reproduce the motion with inverse kinematics, motion smoothing and a lightweight serial protocol.</p>
+        <div class="tech"><span>Python</span><span>OpenCV</span><span>MediaPipe</span><span>Arduino</span></div>
+        <div class="links">
+          <a href="https://github.com/shehab-7004/Robotic_Arm" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_robotics-computervision-arduino-activity-7329958986663759873-TH2G?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy" target="_blank" rel="noopener">Watch demo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="shot"><img src="img3.png" alt="Generative chatbot demo" onerror="this.remove()"></div>
+      <div>
+        <h3>Generative chatbot with transformers</h3>
+        <p>A conversational AI built on GPT-style transformers and fine-tuned on custom datasets for domain-specific answers. Retrieval-augmented generation grounds each reply in source documents for better accuracy.</p>
+        <div class="tech"><span>PyTorch</span><span>Hugging Face</span><span>LangChain</span><span>RAG</span></div>
+        <div class="links">
+          <a href="https://github.com/shehab-moh-01/AI_Chat_Bot" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_machinelearning-nlp-huggingface-activity-7330227789586956289-WriG?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFqZmVMBf-O0bL0658bK5R9oh1a9wIYXt3M" target="_blank" rel="noopener">Watch demo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="shot"><img src="./img4.png" alt="Day and night image classifier" onerror="this.remove()"></div>
+      <div>
+        <h3>Day and night image classifier</h3>
+        <p>A lightweight logistic regression model that tells daytime images from nighttime ones. Features are extracted with OpenCV, and a simple interface returns a prediction for any image you give it.</p>
+        <div class="tech"><span>Python</span><span>OpenCV</span><span>scikit-learn</span></div>
+        <div class="links">
+          <a href="https://colab.research.google.com/drive/1WjCO3p4opNNXXzfWCVzy9ZKqCi1v5Qt8" target="_blank" rel="noopener">Open notebook</a>
+          <a href="https://youtu.be/_-N8ZkAIWag" target="_blank" rel="noopener">Watch demo</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="s" id="certs">
+  <div class="wrap">
+    <h2>Training and certificates</h2>
+
+    <div class="cert">
+      <img src="./ITI-Cert.jpg" alt="" onerror="this.remove()">
+      <div><h3>Summer training: ITI Egypt and NVIDIA</h3><p>GPU-accelerated training in Python, generative AI, LLM applications, prompt engineering and RAG.</p></div>
+      <div><span class="yr">2025</span><a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_ai-llm-rag-activity-7391847189968338945-a5sV?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy" target="_blank" rel="noopener">View</a></div>
+    </div>
+    <div class="cert">
+      <img src="./NVIDIA-Cert.jpg" alt="" onerror="this.remove()">
+      <div><h3>NVIDIA: LLM prompt engineering</h3><p>Advanced training in large language models and practical AI solution design.</p></div>
+      <div><span class="yr">2025</span><a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_llm-promptengineering-nvidia-activity-7376840845821628417-QQ0G" target="_blank" rel="noopener">View</a></div>
+    </div>
+    <div class="cert">
+      <img src="cisco.jpg" alt="" onerror="this.remove()">
+      <div><h3>Cisco: CCNA training program</h3><p>Routing, switching and network fundamentals.</p></div>
+      <div><span class="yr">2025</span><a href="https://www.credly.com/users/shehab-mohamed.c8d835fa/badges#credly" target="_blank" rel="noopener">View</a></div>
+    </div>
+    <div class="cert">
+      <img src="We-Cert.jpg" alt="" onerror="this.remove()">
+      <div><h3>Telecom Egypt summer training</h3><p>Hands-on CCNA networking: routing, switching and network fundamentals.</p></div>
+      <div><span class="yr">2025</span><a href="https://www.linkedin.com/posts/shehab-mohamed-86b072365_ccna-networking-telecomegypt-activity-7401121371382034447-t2yb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFqZmVMBf-O0bL0658bK5R9oh1a9wIYXt3M" target="_blank" rel="noopener">View</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="s contact" id="contact">
+  <div class="wrap">
+    <h2>Have something that should see or move?</h2>
+    <div class="row">
+      <a class="btn main" href="https://www.linkedin.com/in/shehab-mohamed-86b072365" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/shehab-moh-01" target="_blank" rel="noopener">See my code on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">&copy; 2025 Shehab Mohamed</div></footer>
+
+<script>
+(function(){
+  var cv=document.getElementById('stage'),ctx=cv.getContext('2d');
+  var W,H,dpr,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 21 hand landmarks, open (O) and fist (F). Order follows MediaPipe: wrist, thumb 1-4, index 5-8, middle 9-12, ring 13-16, pinky 17-20
+  var O=[[0,120],[-35,90],[-60,60],[-80,32],[-95,5],[-28,40],[-30,-5],[-31,-35],[-32,-60],[0,35],[0,-15],[0,-48],[0,-78],[26,40],[29,-5],[31,-35],[32,-62],[50,52],[58,15],[62,-8],[65,-28]];
+  var F=[[0,120],[-35,90],[-50,62],[-36,44],[-14,40],[-28,40],[-28,12],[-26,32],[-22,48],[0,35],[0,6],[1,28],[2,46],[26,40],[27,12],[28,32],[28,48],[50,52],[52,28],[52,44],[50,58]];
+  var bones=[[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[9,10],[10,11],[11,12],[13,14],[14,15],[15,16],[0,17],[17,18],[18,19],[19,20],[5,9],[9,13],[13,17]];
+  var tips=[4,8,12,16,20];
+  var mx,my,x,y,vx=0,vy=0,curl=0,target=0,tilt=0,t0=performance.now();
+  function size(){
+    dpr=Math.min(devicePixelRatio||1,2);
+    W=cv.clientWidth;H=cv.clientHeight;
+    cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    if(mx===undefined){mx=x=W>820?W*.74:W*.5;my=y=H*.5}
+  }
+  size();addEventListener('resize',size);
+  var hero=document.getElementById('top');
+  function move(e){var r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top}
+  hero.addEventListener('pointermove',move);
+  hero.addEventListener('pointerdown',function(e){if(e.target.closest('a'))return;move(e);target=1});
+  addEventListener('pointerup',function(){target=0});
+  function draw(now){
+    var s=Math.min(W,H)/520; s=Math.max(.8,Math.min(s,1.5));
+    var px=x,py=y;
+    x+=(mx-x)*.09;y+=(my-y)*.09;
+    vx=x-px;vy=y-py;
+    var sp=Math.hypot(vx,vy);
+    tilt+=((vx*.9)-tilt)*.1; tilt=Math.max(-.5,Math.min(.5,tilt));
+    curl+=(target-curl)*.14;
+    var idle=reduce?0:Math.sin((now-t0)/900)*.04;
+    ctx.clearRect(0,0,W,H);
+
+    // faint scan grid around the hand
+    ctx.strokeStyle='rgba(127,200,255,.07)';ctx.lineWidth=1;
+    var g=48,gx=x%g,gy=y%g;
+    ctx.beginPath();
+    for(var i=gx-g;i<W+g;i+=g){ctx.moveTo(i,0);ctx.lineTo(i,H)}
+    for(var j=gy-g;j<H+g;j+=g){ctx.moveTo(0,j);ctx.lineTo(W,j)}
+    ctx.stroke();
+    var grd=ctx.createRadialGradient(x,y,0,x,y,330*s);
+    grd.addColorStop(0,'rgba(10,14,26,0)');grd.addColorStop(1,'rgba(10,14,26,1)');
+    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+
+    // landmarks
+    var c=Math.cos(tilt+idle),sn=Math.sin(tilt+idle),pts=[],minX=1e9,maxX=-1e9,minY=1e9,maxY=-1e9;
+    for(var k=0;k<21;k++){
+      var lx=O[k][0]+(F[k][0]-O[k][0])*curl, ly=O[k][1]+(F[k][1]-O[k][1])*curl;
+      ly-=60; // centre palm on cursor
+      var rx=(lx*c-ly*sn)*s+x, ry=(lx*sn+ly*c)*s+y;
+      pts.push([rx,ry]);
+      minX=Math.min(minX,rx);maxX=Math.max(maxX,rx);minY=Math.min(minY,ry);maxY=Math.max(maxY,ry);
+    }
+    // detection box
+    var pad=26;
+    ctx.strokeStyle='rgba(255,179,71,.55)';ctx.lineWidth=1.2;
+    var bx=minX-pad,by=minY-pad,bw=maxX-minX+pad*2,bh=maxY-minY+pad*2,L=18;
+    ctx.beginPath();
+    [[bx,by,1,1],[bx+bw,by,-1,1],[bx,by+bh,1,-1],[bx+bw,by+bh,-1,-1]].forEach(function(p){
+      ctx.moveTo(p[0]+L*p[2],p[1]);ctx.lineTo(p[0],p[1]);ctx.lineTo(p[0],p[1]+L*p[3]);
+    });
+    ctx.stroke();
+    ctx.fillStyle='#ffb347';ctx.font='600 12px Manrope,system-ui,sans-serif';
+    ctx.fillText(curl>.5?'fist  0.97':'open hand  0.98',bx,by-8);
+
+    // bones
+    ctx.lineCap='round';
+    ctx.shadowColor='rgba(127,200,255,.8)';ctx.shadowBlur=12;
+    ctx.strokeStyle='rgba(127,200,255,.9)';ctx.lineWidth=2.2;
+    ctx.beginPath();
+    bones.forEach(function(b){ctx.moveTo(pts[b[0]][0],pts[b[0]][1]);ctx.lineTo(pts[b[1]][0],pts[b[1]][1])});
+    ctx.stroke();
+    // joints
+    ctx.shadowColor='rgba(255,179,71,.9)';
+    for(var m=0;m<21;m++){
+      var isTip=tips.indexOf(m)>-1;
+      ctx.fillStyle=isTip?'#ffb347':'#ece8df';
+      ctx.beginPath();ctx.arc(pts[m][0],pts[m][1],isTip?5.5:3.6,0,6.283);ctx.fill();
+    }
+    ctx.shadowBlur=0;
+    // readout
+    ctx.fillStyle='rgba(236,232,223,.5)';ctx.font='12px Manrope,system-ui,sans-serif';
+    ctx.fillText('x '+Math.round(x)+'  y '+Math.round(y)+'  v '+sp.toFixed(1),bx,by+bh+20);
+
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+  if(reduce){hero.addEventListener('pointermove',function(){requestAnimationFrame(draw)})}
+})();
+</script>
 </body>
 </html>
